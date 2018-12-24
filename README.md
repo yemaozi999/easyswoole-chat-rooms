@@ -1,6 +1,6 @@
 # easyswoole-chat-rooms
 一款依靠高性能开源框架easyswoole开发的 多房间聊天室
-
+![](demo.png)
 ## 在线体验
 
 [在线DEMO演示站](http://yemaozi.substr.cn/)
