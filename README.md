@@ -78,3 +78,8 @@ DATABASE.password=root
 ```bash
 php easyswoole start
 ```
+## demo页面
+
+```bash
+本地或者服务器执行  根目录下的web/index.html 
+```
