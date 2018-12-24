@@ -54,8 +54,8 @@ MYSQL.port = 3306
 MYSQL.user = root
 MYSQL.timeout = 5
 MYSQL.charset = utf8mb4
-MYSQL.password = root
-MYSQL.database = easyswoole
+MYSQL.password = 
+MYSQL.database = 
 MYSQL.POOL_MAX_NUM = 4
 MYSQL.POOL_TIME_OUT = 0.1
 
@@ -69,9 +69,9 @@ REDIS.POOL_TIME_OUT = 0.1
 
 ################ 自定义配置 ##################
 DATABASE.ip=127.0.0.1
-DATABASE.port=3306
-DATABASE.user=root
-DATABASE.password=root
+DATABASE.port=
+DATABASE.user=
+DATABASE.password=
 ```
 
 ## 启动
