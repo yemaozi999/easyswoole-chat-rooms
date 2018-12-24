@@ -152,7 +152,7 @@ class Test extends Controller
 
         $tableCount = TableManager::getInstance()->get("room_count");
 
-        if($tableCount[count]>=10){
+        if($tableCount['count']>=10){
             $this->response()->setMessage("房间达到数量上限");
         }
         else {
