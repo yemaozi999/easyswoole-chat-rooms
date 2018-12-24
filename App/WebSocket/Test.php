@@ -151,35 +151,39 @@ class Test extends Controller
         $table = TableManager::getInstance()->get("room");
 
         $tableCount = TableManager::getInstance()->get("room_count");
-        $tableCount->incr(0,"count",1);
-        $count = $tableCount->get(0,"count");
 
-        $table->set($count+1,["id"=>$count+1,"name"=>"房间".($count+1)]);
-
-        //向所有用户发送房间 列表
-
-        $users = TableManager::getInstance()->get("talk_users");
-
-        $rooms = array();
-        foreach($table as $key=>$val){
-
-            $rooms[$key] = array("name"=>$val["name"],"id"=>$key);
+        if($tableCount>=10){
+            $this->response()->setMessage("房间达到数量上限");
         }
+        else {
+            $tableCount->incr(0, "count", 1);
+            $count = $tableCount->get(0, "count");
 
-        $param = array(
-            "msg"=>"获取成功",
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>$rooms
-        );
+            $table->set($count + 1, ["id" => $count + 1, "name" => "房间" . ($count + 1)]);
 
-        $result = wsCommon::returnArray(wsCommon::OP_TYPE_FRUSHROOM,$param);
+            //向所有用户发送房间 列表
 
-        foreach($users as $key=>$val){
-            $server->push($key,$result);
+            $users = TableManager::getInstance()->get("talk_users");
+
+            $rooms = array();
+            foreach ($table as $key => $val) {
+
+                $rooms[$key] = array("name" => $val["name"], "id" => $key);
+            }
+
+            $param = array(
+                "msg" => "获取成功",
+                "room" => "",
+                "fd" => "",
+                "to_fd" => "",
+                "res" => $rooms
+            );
+            $result = wsCommon::returnArray(wsCommon::OP_TYPE_FRUSHROOM, $param);
+            foreach ($users as $key => $val) {
+                $server->push($key, $result);
+            }
+
         }
-
     }
 
     function delRoom(){
