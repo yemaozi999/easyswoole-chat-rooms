@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<div>
+    <div>
+        <p>info below</p>
+        <ul  id="line">
+         </ul>
+    </div>
+    <div>
+        <select id="action">
+            <option value="who">who</option>
+            <option value="hello">hello</option>
+            <option value="delay">delay</option>
+            <option value="404">404</option>
+            <option value="close">close</option>
+
+            <option value="sendTo">sendTo2</option>
+            <option value="sendAll">sendAll</option>
+            <option value="select">select</option>
+            <option value="insert">insert</option>
+
+            <option value="reconnect">reconnect</option>
+            <option value="serviceclose">serviceclose</option>
+            <option value="serviceclosefd">serviceclosefd</option>
+            <option value="getSwooleTable">getSwooleTable</option>
+            <option value="createRoom">createRoom</option>
+            <option value="delRoom">delRoom</option>
+            <option value="goInRoom">goInRoom</option>
+            <option value="outRoom">outRoom</option>
+            <option value="sendRoom">sendRoom</option>
+            <option value="getMyRooms">getMyRooms</option>
+            <option value="test">test</option>
+            <option value="getRoomUsers">getRoomUsers</option>
+        </select>
+        <input type="text" id="says">
+        <button onclick="say()">发送</button>
+    </div>
+</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    var wsServer = 'ws://54.248.48.158:9501';
+    var websocket = new WebSocket(wsServer);
+    var intval;
+    window.onload = function () {
+        wsInit(websocket)
+    };
+    function addLine(data) {
+        $("#line").append("<li>"+data+"</li>");
+    }
+
+
+    function wsInit(websocket){
+        websocket.onopen = function (evt) {
+            addLine("Connected to WebSocket server.");
+
+            intval = window.setInterval(heartbreak,10000);
+
+            //开启成功群发消息
+
+            websocket.send(JSON.stringify({
+                action:'sendAllIn',
+                content:{value:"有人进入了"}
+            }));
+
+        };
+        websocket.onclose = function (evt) {
+            addLine("Disconnected");
+            clearInterval(intval);
+            websocket.close();
+        };
+        websocket.onmessage = function (evt) {
+            if(evt.data!='') {
+                addLine('Retrieved data from server: ' + evt.data);
+            }
+            //console.log('Retrieved data from server: ' + evt.data)
+        };
+        websocket.onerror = function (evt, e) {
+            addLine('Error occured: ' + evt.data);
+        };
+    }
+
+    function say() {
+        var content = $("#says").val();
+        var action = $("#action").val();
+
+        if(action=="close"){
+            close();
+        }else if(action=="reconnect"){
+            reconnect();
+        }
+        else{
+            $("#says").val('');
+
+            if(action=="sendRoom"){
+                websocket.send(JSON.stringify({
+                    action:action,
+                    content:{room:content,msg:"432321"}
+                }));
+            }else{
+                websocket.send(JSON.stringify({
+                    action:action,
+                    content:{value:content}
+                }));
+            }
+        }
+    }
+
+    function heartbreak() {
+        var content = "";
+        var action = "who";
+        websocket.send("");
+    }
+
+    function close(){
+        clearInterval(intval);
+        websocket.close();
+    }
+
+    function reconnect() {
+        websocket = new WebSocket(wsServer);
+        wsInit(websocket);
+    }
+
+</script>

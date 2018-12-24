@@ -1,0 +1,670 @@
+<head xmlns="http://www.w3.org/1999/html">
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel ="stylesheet" href="init.css">
+</head>
+
+<style>
+
+    #app{
+        margin:0 auto;
+        width:720px;
+        font-family:PingFang SC;
+    }
+
+    .el-row{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .el-header{
+        height:64px;
+    }
+
+    .el-header, .el-footer {
+        background-color: #B3C0D1;
+        color: #333;
+        text-align: center;
+        line-height: 64px;
+    }
+
+    .el-aside {
+        background-color: #D3DCE6;
+        color: #333;
+        text-align: center;
+
+    }
+
+    .el-main {
+        background-color: #E9EEF3;
+        color: #333;
+        text-align: center;
+
+    }
+
+    body > .el-container {
+        margin-bottom: 40px;
+    }
+
+    .title-head{
+        display:flex;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+    .title-head span{
+        font-weight: 600;
+    }
+    .title-head a{
+        font-size: 12px;
+    }
+
+
+    .el-container:nth-child(5) .el-aside,
+    .el-container:nth-child(6) .el-aside {
+        line-height: 260px;
+    }
+
+    .el-container:nth-child(7) .el-aside {
+        line-height: 320px;
+    }
+
+    .rooms{
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+
+    .el-aside{
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .rooms .left-menu{
+        display:flex;
+        flex-direction: column;
+    }
+
+    .rooms .left-menu .left-menu-head{
+        height:64px;
+        display:flex;
+        flex-direction: row;
+        background-color: #2a2e32;
+
+    }
+
+    .rooms .left-menu .left-menu-head{
+        height:64px;
+        display:flex;
+        flex-direction: row;
+    }
+
+    .lmh-img{
+        height:64px;
+        width:80px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .left-menu-head img{
+        margin-top: 10px;
+        width:50px;
+        height:50px;
+        border-radius: 10px;
+    }
+    .left-menu-head .lmh-desc{
+         height:64px;
+         width:120px;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color:#ddd;
+     }
+
+
+    .left-menu-head .lmh-desc p{
+        font-size: 18px;
+        line-height: 20px;
+
+    }
+
+    .left-menu-title{
+        height:40px;
+        line-height: 40px;
+        background: #CCC;
+        font-size: 15px;
+    }
+
+    .lmt-list{
+        height:200px;
+        overflow-y: auto;
+    }
+
+    .lmt-list ul{
+        display:flex;
+        display: -webkit-flex;
+        flex-direction: column;
+
+    }
+
+
+
+    .lmt-list li{
+        height:41px;
+        display: flex;
+        align-items: center;
+        background: #e6e5e5;
+    }
+
+    .lmt-list li div{
+        margin:0 auto;
+        height: 25px;
+        width:165px;
+        display: flex;
+        flex-direction: row;
+        line-height: 25px;
+        font-weight: 700;
+    }
+
+    .lmt-list li div img {
+        height:25px;
+        width:25px;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+
+    .box-card {
+        width: 480px;
+    }
+
+
+    .all_room ul{
+        display:flex;
+        display:-webkit-flex;
+        flex-direction:row;
+        justify-content: flex-start;
+		flex-wrap: wrap;
+    }
+
+
+    .room-right{
+        width:610px;
+        height:304px;
+        background: #f5f5f5;
+        position: relative;
+    }
+    .room-right-head{
+        height: 63px;
+        line-height: 63px;
+        text-align: left;
+        color:#666;
+        font-size: 16px;
+        padding: 0 25px;
+        border-bottom: 1px solid #e7e7e7;
+    }
+
+    .room-right-middle{
+        height: 189px;
+        overflow: auto;
+        margin-top: 10px;
+        margin-left: 5px;
+        margin-right: 5px;
+        display:flex;
+        display:-webkit-flex;
+        flex-direction: column;
+    }
+
+
+
+    .msg-left img{
+        display: block;
+        float:left;
+        width:48px;
+        height:48px;
+        border-radius: 50%;
+    }
+    .msg-left .msg-content{
+
+        margin-left: 55px;
+    }
+    .msg-right .msg-content{
+        margin-right: 55px;
+    }
+
+    .msg-right img{
+        display: block;
+        float:right;
+        width:48px;
+        height:48px;
+        border-radius: 50%;
+    }
+    .msg-left{
+        margin-bottom: 10px;
+    }
+    .msg-right{
+        margin-bottom: 10px;
+        text-align: right;
+    }
+
+    .room-right-bottom{
+
+        height: 40px;
+    }
+
+
+    .msg-content p{
+        color:#999;
+        font-weight: 700;
+    }
+    .msg-content h5{
+        margin-top: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        background: #fff;
+        border-radius: 10px;
+        line-height: 20px;
+        max-width: 300px;
+    }
+
+    .msg-right .msg-content h5{
+        float:right;
+        background-color: #90EE90;
+    }
+    .msg-right .msg-content h5{
+        float: right;
+        background-color: #90EE90;
+    }
+    .sys-msg{
+        margin:0 auto;
+        margin-top: 10px;
+    }
+    .sys-msg span{
+        text-align: center;
+        background-color:#0e90d2 ;
+        border-radius: 2px;
+    }
+
+</style>
+
+<body>
+<div id="app">
+
+    <div class = "title-head">
+       <span>EASYSWOOLE CHATROOMS </span> <a href="https://github.com/yemaozi999/easyswoole-chat-rooms">github链接</a>
+    </div>
+
+    <div class="top_button">
+        <el-row>
+            <el-button round  @click="say('createRoom')">创建房间</el-button>
+            <el-button type="primary" round @click="say('reconnect')">断线重连</el-button>
+            <el-button type="success" round @click="say('close')">关闭连接</el-button>
+<!--            <el-button type="info" round @click="say('who')">输出我是谁</el-button>
+            <el-button type="warning" round>无</el-button>
+            <el-button type="danger" round>无</el-button>-->
+        </el-row>
+    </div>
+<!--{{room_fd}}}-->
+    <div class="all_room">
+        <ul>
+
+            <li v-for="(item, index) in rooms">
+                <el-button plain @click="goInRoom(item)">进入房间{{item}}</el-button>
+            </li>
+
+        </ul>
+    </div>
+
+
+<!--    <div v-for="(item, index) in room_fd">
+        <div class="rooms">
+
+            <el-container>
+                <el-aside width="200px">
+                    <div class = "left-menu">
+                        <h1>房间{{index}} <el-button type="info" size="mini" round @click="outRoom(index)">退出房间</el-button></h1>
+                        <ul>
+                            <li v-for="users in item.users">
+                                用户-{{users.fd}}:{{users.name}}
+                            </li>
+                        </ul>
+
+                    </div>
+                </el-aside>
+                <el-container>
+                    <el-header>房间{{index}}聊天框</el-header>
+                    <el-main>
+                        <el-card class="box-card">
+                            <div v-for="contents in item.contents" class="text item">
+                                {{contents.msg}}
+                            </div>
+                        </el-card>
+                    </el-main>
+
+                    <el-footer>
+                        <el-input style="width: 80%;" v-model="item.input"  ></el-input><el-button type="primary" style="width: 20%;" @click="say('sendRoom',index)">发送</el-button>
+                    </el-footer>
+                </el-container>
+            </el-container>
+
+        </div>
+    </div>-->
+
+    <div v-for="(item, index) in room_fd">
+
+
+        <div class="rooms">
+
+            <el-container>
+                <el-aside width="200px">
+                    <div class = "left-menu">
+                        <div class="left-menu-head">
+
+                            <div class="lmh-img"><img src="img.jpg"></div><div class="lmh-desc"><p>{{my_info.name}}</p> <el-button type="info" size="mini" round @click="outRoom(index)">退出房间</el-button></div>
+
+                        </div>
+                        <div class = "left-menu-title">
+                            <p>车上乘客</p>
+                        </div>
+                        <div class = "lmt-list">
+                        <ul>
+                            <li v-for="users in item.users">
+                                <div><img src="img.jpg"><p>{{users.name}}</p></div>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+                </el-aside>
+
+                <div class = "room-right">
+                    <div class="room-right-head">
+                        房间{{index}}
+                    </div>
+
+                    <div :class="setClass('room-right-middle',index)">
+
+                        <template v-for="contents in item.contents">
+                            <div v-if="contents.type==1" class="msg-right">
+                                <img src="img.jpg">
+                                <div class="msg-content">
+                                <p>{{contents.name}}</p>
+                                <h5>{{contents.msg}}</h5>
+                                </div>
+                            </div>
+
+                            <div v-if="contents.type==2" class="msg-left">
+                                <img src="img.jpg">
+                                <div class="msg-content">
+                                    <p>{{contents.name}}</p>
+                                    <h5>{{contents.msg}}</h5>
+                                </div>
+                            </div>
+
+                            <div v-if="contents.type==3" class="sys-msg">
+                                <span>{{contents.msg}}</span>
+                            </div>
+                        </template>
+
+                    </div>
+
+                    <div class="room-right-bottom">
+                           <el-input style="width: 80%;" v-model="item.input" ></el-input><el-button type="primary" style="width: 20%;" @click="say('sendRoom',index)" >发送</el-button>
+                    </div>
+
+
+                </div>
+
+
+            </el-container>
+
+        </div>
+
+    </div>
+
+
+
+
+
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+
+    var wsServer = 'ws://54.248.48.158:9501';
+    var websocket = new WebSocket(wsServer);
+    var intval;
+
+
+    var app = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                rooms: [],
+                my_info:{
+                    name:'游客',fd:1
+                },
+                room_fd: {
+                    /*1: {
+                        users: [
+                            {fd: 1, name: "lhr"},
+                            {fd: 2, name: "lhr2"}
+                        ],
+                        contents: [
+                            {fd: 1, name: "lhr", msg: "你好1",type:1},
+                            {fd: 2, name: "lhr", msg: "你好2",type:2}
+                            ],
+                        input:""
+                    },
+                    2:{
+                        users: [
+                            {fd: 1, name: "lhr"},
+                            {fd: 2, name: "lhr2"},
+                            {fd: 3, name: "lhr3"}
+                        ],
+                        contents: [
+                            {fd: 1, name: "lhr", msg: "你好1",type:1},
+                            {fd: 2, name: "lhr", msg: "你好2",type:2},
+                            {fd: 2, name: "lhr", msg: "你好3",type:2},
+                            {fd: 2, name: "lhr", msg: "你好4",type:2},
+                            {fd: 0, name: "", msg: "系统消息",type:3}
+                        ],
+                        input:""
+                    }*/
+                }
+            }
+        },
+        created:function(){
+            this.wsInit(websocket)
+        },
+        methods:{
+            wsInit(websocket){
+
+                websocket.onopen = function (evt) {
+                    console.log("Connected to WebSocket server.");
+
+                    intval = window.setInterval(app.heartbreak,10000);
+
+                    //开启成功群发消息
+
+                    app.rooms = [];
+
+
+                    websocket.send(JSON.stringify({
+                        action:'sendAllIn',
+                        content:{value:"有人进入了"}
+                    }));
+
+                    websocket.send(JSON.stringify({
+                        action:"getMyRooms",
+                        content:{value:""}
+                    }));
+
+                    websocket.send(JSON.stringify({
+                        action:"who",
+                        content:{value:""}
+                    }));
+                    websocket.send(JSON.stringify({
+                        action:"getAllRooms",
+                        content:{value:""}
+                    }));
+
+                };
+                websocket.onclose = function (evt) {
+                    console.log("Disconnected");
+                    clearInterval(intval);
+                    websocket.close();
+                };
+                websocket.onmessage = function (evt) {
+                    if(evt.data!='') {
+                        console.log('Retrieved data from server: ' + evt.data);
+
+                        var json = JSON.parse(evt.data);
+                        console.log(json);
+
+                        if(json.op_type==1){
+                            let jsonLength = app.objCounts(json.data.res);
+                            var lastIndex = "";
+                            for(var idx in json.data.res){
+                                lastIndex = idx;
+                            }
+                            var lastRoom = json.data.res[lastIndex];
+                            app.rooms.push(lastRoom.id);
+                        }
+
+                        if(json.op_type==2){
+                            //新增左侧列表用户
+                            app.room_fd[json.data.room].users.push({fd: json.data.fd, name: json.data.res.name})
+                            //房间系统消息
+                            app.room_fd[json.data.room].contents.push({fd: 0, name: "", msg: json.data.msg,type:3})
+                        }
+
+                        if(json.op_type==3){
+                            console.log(app.room_fd[json.data.room].users);
+                            //删除房间左侧列表的用户
+                            app.room_fd[json.data.room].users.forEach(function(val,key){
+                                if(val.fd==json.data.fd){
+                                    app.room_fd[json.data.room].users.splice(key,1);
+                                }
+                            })
+                            //房间系统消息
+                            app.room_fd[json.data.room].contents.push({fd: 0, name: "", msg: json.data.msg,type:3})
+                        }
+                        //const { op_type, data } = json
+                        if(json.op_type==7){
+                            app.my_info.name = json.data.res.talk_user_fd_name;
+                            app.my_info.fd = json.data.res.talk_users_fd_id;
+                        }
+                        if(json.op_type==4){
+                            console.log(json)
+                            let msg_type = 2;
+                            if(json.data.fd == app.my_info.fd){
+                                msg_type = 1
+                            }
+                            app.room_fd[json.data.room].contents.push({fd: json.data.fd, name: json.data.fd_name , msg: json.data.msg,type:msg_type})
+                        }
+                        if(json.op_type==8){
+                            let room = json.data.room
+                            let room_users = json.data.res
+
+                            room_users.map(function (item) {
+                                app.room_fd[room].users.push({
+                                    fd:item.talk_users_fd_id,
+                                    name:item.talk_user_fd_name
+                                })
+                            })
+
+                        }
+                        if(json.op_type==9){
+                            let rooms =  json.data.res
+                            rooms.map(function(item){
+                                app.rooms.push(item.id)
+                            })
+                        }
+                    }
+                };
+                websocket.onerror = function (evt, e) {
+                    console.log('Error occured: ' + evt.data);
+                };
+
+
+
+            },
+            say(action,content='') {
+
+                console.log(action);
+                console.log(content);
+
+
+                if(action=="close"){
+                    app.close();
+                }else if(action=="reconnect"){
+                    app.reconnect();
+                }else if(action=="sendRoom"){
+                    let room = content
+                    let msg = app.room_fd[room].input
+
+                    console.log(action)
+                    console.log(msg)
+
+                    websocket.send(JSON.stringify({
+                        action:action,
+                        content:{room:room,msg:msg}
+                    }));
+
+                    app.room_fd[room].input = ""
+
+                }
+                else{
+                    websocket.send(JSON.stringify({
+                        action:action,
+                        content:{value:content}
+                    }));
+                }
+            },
+            heartbreak() {
+                var content = "";
+                var action = "who";
+                websocket.send("");
+            },
+            close(){
+                clearInterval(intval);
+                websocket.close();
+            },
+            reconnect() {
+                websocket = new WebSocket(wsServer);
+                app.wsInit(websocket);
+            },
+            objCounts(o){
+                var t = typeof o;
+                if(t == 'string'){
+                    return o.length;
+                }else if(t == 'object'){
+                    var n = 0;
+                    for(var i in o){
+                        n++;
+                    }
+                    return n;
+                }
+                return false
+            },
+            outRoom(index){
+
+                app.say('outRoom',index)
+                Vue.delete(this.room_fd,index)
+
+            },
+            goInRoom(index){
+
+                Vue.set(app.room_fd,index,{'users':[],'contents':[],'input':''})
+
+                app.say('goInRoom',index)
+                //Vue.delete(this.room_fd,index)
+
+                app.say("getRoomUsers",index)
+
+
+            },
+            setClass(str,room){
+               return str+" room-"+room                        
