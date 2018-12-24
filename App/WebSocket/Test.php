@@ -21,7 +21,6 @@ class Test extends Controller
 {
     function hello()
     {
-
         $param = array(
             "msg"=>'call hello with arg:'. json_encode($this->caller()->getArgs()),
             "room"=>"",
@@ -29,16 +28,11 @@ class Test extends Controller
             "to_fd"=>"",
             "res"=>""
         );
-
         $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM, $param);
-
         $this->response()->setMessage($return);
     }
-
     public function who(){
-
         $myData = TableManager::getInstance()->get("talk_users")->get($this->caller()->getClient()->getFd());
-
         $param = array(
             "msg"=>"获取成功",
             "room"=>"",
@@ -46,15 +40,12 @@ class Test extends Controller
             "to_fd"=>"",
             "res"=>$myData
         );
-
         $return  = wsCommon::returnArray(wsCommon::OP_TYPE_MY_INFO, $param);
         $this->response()->setMessage($return);
     }
 
     function delay()
     {
-
-
         $param = array(
             "msg"=>'this is delay action',
             "room"=>"",
@@ -64,7 +55,6 @@ class Test extends Controller
         );
 
         $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM, $param);
-
         $this->response()->setMessage($return);
         $client = $this->caller()->getClient();
 
@@ -92,75 +82,6 @@ class Test extends Controller
     }
 
 
-    function sendTo()
-    {
-        //测试吧数据发送给其他人
-        $server = ServerManager::getInstance()->getSwooleServer();
-
-        $param = array(
-            "msg"=>'发送成功',
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>""
-        );
-
-        $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM, $param);
-
-        $server->push(2,$return);
-        $this->response()->setMessage($return);
-    }
-
-
-    function select(){
-
-        $conf = new \EasySwoole\Mysqli\Config(\EasySwoole\EasySwoole\Config::getInstance()->getConf('MYSQL'));
-        $db = new Mysqli($conf);
-        $data = $db->get('task');//获取一个表的数据
-
-        $param = array(
-            "msg"=>$data,
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>$data
-        );
-
-        $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM ,$param);
-
-        $this->response()->setMessage($return);
-
-    }
-
-    function insert(){
-
-        $data = $this->caller()->getArgs();
-
-        $conf = new \EasySwoole\Mysqli\Config(\EasySwoole\EasySwoole\Config::getInstance()->getConf('MYSQL'));
-        $db = new Mysqli($conf);
-        //$data = $db->get('task');//获取一个表的数据
-
-        $data = array(
-            "task_name"=>"task".rand(1,1000)
-        );
-
-        $insert_id = $db->insert("task", $data);
-
-        $param = array(
-            "msg"=>$insert_id,
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>$insert_id
-        );
-
-        $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM,$param);
-
-        $this->response()->setMessage($return);
-
-    }
-
-
     function sendAll(){
 
         //发送到全部人
@@ -181,9 +102,6 @@ class Test extends Controller
         foreach($table as $key=>$val){
             $server->push($val["talk_users_fd_id"],$return);
         }
-
-
-
     }
 
     function sendAllIn(){
@@ -211,7 +129,6 @@ class Test extends Controller
 
     }
 
-
     function serviceclose(){
         //服务器主动关闭
         $client = $this->caller()->getClient();
@@ -225,59 +142,6 @@ class Test extends Controller
         $server = $server = ServerManager::getInstance()->getSwooleServer();
         $server ->close($fd);
     }
-
-
-    function getSwooleTable(){
-
-        $table = TableManager::getInstance()->get("talk_users");
-
-        $result = array();
-
-        foreach($table as $key=>$val){
-            $result[] =  array("id"=>$val["talk_users_fd_id"],"name"=>$val["talk_user_fd_name"]);
-        }
-
-        //$count = $table->count();
-
-        $param = array(
-            "msg"=>"获取成功",
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>$result
-        );
-
-        $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM,$param);
-
-        $this->response()->setMessage($return);
-
-    }
-
-
-    function getRedis(){
-
-        $redis = wsBase::getRedisPool();
-
-        $redis->sAdd("room1","321");
-
-        $result = $redis->sMembers("room1");
-
-        wsBase::gcRedis($redis);
-
-        $param = array(
-            "msg"=>"获取成功",
-            "room"=>"",
-            "fd"=>"",
-            "to_fd"=>"",
-            "res"=>$result
-        );
-
-        $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM,$param);
-
-        $this->response()->setMessage($return);
-
-    }
-
 
 
     function createRoom(){

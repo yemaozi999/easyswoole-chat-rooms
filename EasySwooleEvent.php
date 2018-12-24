@@ -249,8 +249,6 @@ class EasySwooleEvent implements Event
 
             $fdTable->del($fd);
 
-
-
             //退场群发
             foreach($fdTable as $key=>$val){
 
@@ -263,9 +261,7 @@ class EasySwooleEvent implements Event
                         "to_fd"=>"",
                         "res"=>""
                     );
-
                     $return  = wsCommon::returnArray(wsCommon::OP_TYPE_SYSTEM,$param);
-
                     $server->push($val["talk_users_fd_id"],$return);
                 }
             }

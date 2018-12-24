@@ -1,0 +1,275 @@
+#app{
+    margin:0 auto;
+    width:720px;
+    font-family:PingFang SC;
+}
+.el-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.el-header{
+    height:64px;
+}
+
+.el-header, .el-footer {
+    background-color: #B3C0D1;
+    color: #333;
+    text-align: center;
+    line-height: 64px;
+}
+
+.el-aside {
+    background-color: #D3DCE6;
+    color: #333;
+    text-align: center;
+
+}
+
+.el-main {
+    background-color: #E9EEF3;
+    color: #333;
+    text-align: center;
+
+}
+
+body > .el-container {
+    margin-bottom: 40px;
+}
+
+.title-head{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+.title-head span{
+    font-weight: 600;
+}
+.title-head a{
+    font-size: 12px;
+}
+
+
+.el-container:nth-child(5) .el-aside,
+.el-container:nth-child(6) .el-aside {
+    line-height: 260px;
+}
+
+.el-container:nth-child(7) .el-aside {
+    line-height: 320px;
+}
+
+.rooms{
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.el-aside{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.rooms .left-menu{
+    display:flex;
+    flex-direction: column;
+}
+
+.rooms .left-menu .left-menu-head{
+    height:64px;
+    display:flex;
+    flex-direction: row;
+    background-color: #2a2e32;
+
+}
+
+.rooms .left-menu .left-menu-head{
+    height:64px;
+    display:flex;
+    flex-direction: row;
+}
+
+.lmh-img{
+    height:64px;
+    width:80px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.left-menu-head img{
+    margin-top: 10px;
+    width:50px;
+    height:50px;
+    border-radius: 10px;
+}
+.left-menu-head .lmh-desc{
+    height:64px;
+    width:120px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color:#ddd;
+}
+
+
+.left-menu-head .lmh-desc p{
+    font-size: 18px;
+    line-height: 20px;
+
+}
+
+.left-menu-title{
+    height:40px;
+    line-height: 40px;
+    background: #CCC;
+    font-size: 15px;
+}
+
+.lmt-list{
+    height:200px;
+    overflow-y: auto;
+}
+
+.lmt-list ul{
+    display:flex;
+    display: -webkit-flex;
+    flex-direction: column;
+
+}
+
+
+
+.lmt-list li{
+    height:41px;
+    display: flex;
+    align-items: center;
+    background: #e6e5e5;
+}
+
+.lmt-list li div{
+    margin:0 auto;
+    height: 25px;
+    width:165px;
+    display: flex;
+    flex-direction: row;
+    line-height: 25px;
+    font-weight: 700;
+}
+
+.lmt-list li div img {
+    height:25px;
+    width:25px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.box-card {
+    width: 480px;
+}
+
+
+.all_room ul{
+    display:flex;
+    display:-webkit-flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+
+.room-right{
+    width:610px;
+    height:304px;
+    background: #f5f5f5;
+    position: relative;
+}
+.room-right-head{
+    height: 63px;
+    line-height: 63px;
+    text-align: left;
+    color:#666;
+    font-size: 16px;
+    padding: 0 25px;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.room-right-middle{
+    height: 189px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    display:flex;
+    display:-webkit-flex;
+    flex-direction: column;
+}
+
+
+
+.msg-left img{
+    display: block;
+    float:left;
+    width:48px;
+    height:48px;
+    border-radius: 50%;
+}
+.msg-left .msg-content{
+
+    margin-left: 55px;
+}
+.msg-right .msg-content{
+    margin-right: 55px;
+}
+
+.msg-right img{
+    display: block;
+    float:right;
+    width:48px;
+    height:48px;
+    border-radius: 50%;
+}
+.msg-left{
+    margin-bottom: 10px;
+}
+.msg-right{
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.room-right-bottom{
+
+    height: 40px;
+}
+
+
+.msg-content p{
+    color:#999;
+    font-weight: 700;
+}
+.msg-content h5{
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: #fff;
+    border-radius: 10px;
+    line-height: 20px;
+    max-width: 300px;
+}
+
+.msg-right .msg-content h5{
+    float:right;
+    background-color: #90EE90;
+}
+.msg-right .msg-content h5{
+    float: right;
+    background-color: #90EE90;
+}
+.sys-msg{
+    margin:0 auto;
+    margin-top: 10px;
+}
+.sys-msg span{
+    text-align: center;
+    background-color:#0e90d2 ;
+    border-radius: 2px;
+}

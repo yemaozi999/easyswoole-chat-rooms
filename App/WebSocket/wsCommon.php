@@ -21,11 +21,8 @@ class wsCommon
     const OP_TYPE_SENDROOMMSG = 4;  //房间发言
     const OP_TYPE_MY_ROOMS = 5;     //获取我的房间
     const OP_TYPE_MY_INFO = 7;      //获取我的信息
-
     const OP_TYPE_ROOM_USERS = 8;  //获取房间用户
-
     const OP_TYPE_SYSTEM = 6;        //系统消息
-
     const OP_TYPE_ALL_ROOMS = 9;    //所有房间
 
     public static function returnArray($op_type,$param):String{
