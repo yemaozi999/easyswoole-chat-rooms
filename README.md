@@ -3,7 +3,7 @@
 ![](demo.png)
 ## 在线体验
 
-[在线DEMO演示站](http://yemaozi.substr.cn/)
+[在线DEMO演示站](http://www.yemaozi999.info/)
 [文档地址](https://www.kancloud.cn/yemaozi999/easyswoole-chatrooms)
 ## 安装
 
