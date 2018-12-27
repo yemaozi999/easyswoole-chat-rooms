@@ -11,8 +11,8 @@
 
 ```bash
 git clone https://github.com/yemaozi999/easyswoole-chat-rooms.git
+cd easyswoole-chat-rooms
 composer install
-easyswoole install
 php vendor/easyswoole/easyswoole/bin/easyswoole.php install
 //当提示是否要覆盖EasySwooleEvent.php 时,选择N
 cp sample.env dev.env
